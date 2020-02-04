@@ -6,32 +6,64 @@ using System.Text;
 namespace CourseApp
 {
 
-    class Produto
+    class Product
     {
-        public string Nome;
-        public double Preco;
-        public int Quantidade;
-        public double ValorTotalEmEstoque()
+        public int id { get; set; }
+
+        private string _name;
+        public double Price { get;  set; }
+        public int Ammount { get; set; }        
+
+        public Product()
         {
-            return Preco * Quantidade;
         }
-        public void AdicionarProdutos(int quantidade)
+
+        public Product(string name, double price)
         {
-            Quantidade += quantidade;
+            _name = name;
+            Price = price;
         }
-        public void RemoverProdutos(int quantidade)
+
+        public Product(string name, double price, int ammount)
         {
-            Quantidade -= quantidade;
+            _name = name;
+            Price = price; 
+            Ammount = ammount;
         }
+
+        public string Name {
+            get { return _name;  }        
+            set {
+                if (value != "")
+                {
+                    _name = value;
+                }
+            }
+        }
+     
+
+        public double StockValue()
+        {
+            return Price * Ammount;
+        }
+        public void AddProduct(int ammount)
+        {
+            Ammount += ammount;
+        }
+        public void DeleteProduct(int ammount)
+        {
+            Ammount -= ammount;
+        }   
         public override string ToString()
         {
-            return Nome
+            return _name
             + ", $ "
-            + Preco.ToString("F2", CultureInfo.InvariantCulture)
+            + Price.ToString("F2", CultureInfo.InvariantCulture)
             + ", "
-            + Quantidade
+            + Ammount
             + " unidades, Total: $ "
-            + ValorTotalEmEstoque().ToString("F2", CultureInfo.InvariantCulture);
+            + StockValue().ToString("F2", CultureInfo.InvariantCulture)
+            + "\n" ;
         }
     }
 }

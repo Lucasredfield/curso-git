@@ -36,12 +36,12 @@ namespace CourseApp
 
         static double CalculateTriangle(int i)
         {
-            Triangle triangle = new Triangle();
-
             Console.WriteLine("Entre com as medidas do " + i + "° triângulo: ");
-            triangle.SideA = double.Parse(Console.ReadLine());
-            triangle.SideB = double.Parse(Console.ReadLine());
-            triangle.SideC = double.Parse(Console.ReadLine());
+            Triangle triangle = new Triangle(
+            double.Parse(Console.ReadLine()),
+            double.Parse(Console.ReadLine()),
+            double.Parse(Console.ReadLine())
+            );
 
             double area = triangle.Area(triangle.SideA, triangle.SideB, triangle.SideC);
 
